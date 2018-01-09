@@ -1,18 +1,21 @@
 <!-- Template area is the visual part of the component -->
 <template>
   <div>
-    <ul>
-      <li>Todo A</li>
-      <li>Todo B</li>
-      <li>Todo C</li>
-    </ul>
+    <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p>
+    <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
+    <todo v-for="todo in todos" v-bind:todo="todo"></todo>
   </div>
 </template>
 
 <!-- Behavior, events, and data storage for the template are handled by the class -->
 <script type="text/javascript">
-
+import Todo from './Todo';
 export default {
+  // declares the properties this component will accept
+  props: ['todos'],
+  components: {
+    Todo,
+  },
 };
 
 </script>
