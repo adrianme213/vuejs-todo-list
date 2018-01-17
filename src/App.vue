@@ -1,17 +1,20 @@
 <template>
   <div>
     <todo-list v-bind:todos="todos"></todo-list>
+    <create-todo v-on:create-todo="createTodo"></create-todo>
   </div>
 </template>
 
 <script>
-
+import SweetAlert from 'sweetalert';
 import TodoList from './components/TodoList';
+import CreateTodo from './components/CreateTodo';
 
 export default {
   name: 'app',
   components: {
     TodoList,
+    CreateTodo,
   },
   // data function avails data to the template
   // The todos will now be available to components
@@ -35,6 +38,15 @@ export default {
         done: false,
       }],
     };
+  },
+  methods: {
+    createTodo(title) {
+      this.todos.push({
+        title,
+        done: false,
+      });
+      SweetAlert('Success!', 'To-Do Created!', 'Success');
+    },
   },
 };
 </script>
