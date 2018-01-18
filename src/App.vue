@@ -40,11 +40,8 @@ export default {
     };
   },
   methods: {
-    createTodo(title) {
-      this.todos.push({
-        title,
-        done: false,
-      });
+    createTodo(newTodo) {
+      this.todos.push(newTodo);
       SweetAlert('Success!', 'To-Do Created!', 'Success');
     },
   },
